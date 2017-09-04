@@ -7,8 +7,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Forum Threads</div>
                 <div class="panel-body">
-                    <article>
+                    <article>                    
                         <h4>
+                            <a href="#">{{ $thread->creator->name }}</a> posted: 
                             {{ $thread->title }}
                         </h4>
                         <div class="body">{{ $thread->body }}</div>
@@ -21,15 +22,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             @foreach($thread->replies as $reply)             
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="#">{{ $reply->owner->name }}</a> said: {{ $reply->created_at->diffForHumans() }}...
-                    </div>
+                @include('threads.reply')
 
-                    <div class="panel-body">
-                        {{ $reply->body }}
-                    </div>                        
-                </div>
             @endforeach
         </div>
     </div>
