@@ -5,15 +5,27 @@
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Forum Threads</div>
-                <div class="panel-body">
-                    <article>                    
-                        <h4>
+                <div class="panel-heading">
+                    
+                    <div class="level">
+                        
+                        <span class="flex">
                             <a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a> posted: 
                             {{ $thread->title }}
-                        </h4>
-                        <div class="body">{{ $thread->body }}</div>
-                    </article>                        
+                        </span>
+
+                        <form action="{{ $thread->path() }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            
+                            <button type="submit" class="btn btn-primary">Delete Thread</button>
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="body">{{ $thread->body }}</div>
                 </div>
             </div>
 
