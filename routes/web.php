@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    $thread = \App\Thread::find(1);
+
+    // dd($thread);
+
+    $foo = new \ReflectionClass($thread);
+
+    dd($foo->getShortName());
 });
 
 Auth::routes();
